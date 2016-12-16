@@ -32,6 +32,24 @@ set :bundle_binstubs, -> { "~#{fetch(:deploy_user)}/bin" }
 
 set :migration_role, :app
 
+after :'deploy:updated', :'version:fetch' do
+  on roles(:all) do
+    within repo_path do
+      with fetch(:git_environmental_variables) do
+        set :backend_version, capture(:git, 'describe', '--tags', '--long')
+      end
+    end
+  end
+end
+
+before :'deploy:published', :'version:write_to_file' do
+  on roles(:all) do
+    within release_path do
+      execute(:echo, "\"#{fetch(:backend_version)}\" > VERSION")
+    end
+  end
+end
+
 # OvGU related settings
 
 after :'deploy:publishing', :create_symlinks do
