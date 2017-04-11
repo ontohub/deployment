@@ -23,7 +23,7 @@ append :linked_dirs, 'log', 'public/system', 'public/uploads',
 set :rbenv_type, :system # or :user
 # The ruby version is only considered if there is no override (like a
 # .ruby-version file)
-set :rbenv_ruby, '2.3.3'
+set :rbenv_ruby, '2.4.1'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} "\
                    "#{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w(rake gem bundle ruby rails)
