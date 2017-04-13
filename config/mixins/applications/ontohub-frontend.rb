@@ -25,9 +25,6 @@ set :ember_cli_output_path, 'dist'
 # set :ember_cli_target_path, nil # defaults to the release_path
 set :ember_cli_env, :production
 
-# Default value for :linked_files is []
-append :linked_files, 'config/environment.js'
-
 after :'deploy:publishing', :create_symlinks do
   on roles(:all) do
     execute('ln', '-sf',
