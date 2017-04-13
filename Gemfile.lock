@@ -30,7 +30,7 @@ GEM
     i18n (0.7.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (3.2.0)
+    net-ssh (4.1.0)
     rake (11.3.0)
     sshkit (1.11.3)
       net-scp (>= 1.1.2)
@@ -49,4 +49,4 @@ DEPENDENCIES
   capistrano-yarn (~> 2.0.2)
 
 BUNDLED WITH
-   1.13.2
+   1.14.6
