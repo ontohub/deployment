@@ -30,6 +30,23 @@ Before the first deployment can succeed, the files and directories that are targ
 Which files and directories are needed to be created is specified in the `:linked_files` and `:linked_dirs` configuration variables of the corresponding application config file in [config/mixins/applications](config/mixins/applications).
 These files and directories must be located at `:deploy_to/shared/`.
 
+## Required tools and libs
+### ontohub-backend
+#### On the deploying machine
+* bundler
+#### On the server
+* rbenv
+* bundler
+
+### ontohub-frontend
+The ontohub-frontend repository is fetched to the machine that invokes capistrano and built there.
+The result (static html/css/js) is then uploaded to the server.
+Therefore, we need to install all dependencies of the ontohub-frontend on the deploying machine and nothing at all on the server.
+#### On the deploying machine
+* yarn
+#### On the server
+* nothing at all
+
 ## Structure
 
 Each allowed deployment stage is set up in [config/deploy](config/deploy) and basically consists of mixins from [config/mixins/applications](config/mixins/applications), [config/mixins/environments](config/mixins/environments) and [config/mixins/servers](config/mixins/servers).

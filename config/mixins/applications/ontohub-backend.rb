@@ -12,8 +12,11 @@ set :application, 'ontohub-backend'
 set :repo_url, 'https://github.com/ontohub/ontohub-backend.git'
 
 # Default value for :linked_files is []
-append :linked_files, 'config/database.yml', 'config/secrets.yml',
-                      'config/settings.local.yml'
+append :linked_files, 'config/database.yml',
+                      'config/secrets.yml',
+                      'config/settings.local.yml',
+                      'config/settings/production.local.yml',
+                      'config/environments/production.local.rb'
 
 # Default value for linked_dirs is []
 append :linked_dirs, 'log', 'public/system', 'public/uploads',
