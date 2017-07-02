@@ -66,6 +66,18 @@ namespace :git do
   end
 end
 
+# Find the latest tag in the local repository
+# (overwrite the task for the live stage)
+Rake::Task['set_latest_tag'].clear_actions
+after :'git:update', :set_latest_tag do
+  run_locally do
+    Dir.chdir(fetch(:local_repo_path)) do
+      set :latest_tag, `git tag --list`.lines.last.strip
+    end
+  end
+end
+after :set_latest_tag, :set_deploy_tag
+
 after :'git:update', :'git:checkout' do
   run_locally do
     Dir.chdir(fetch(:local_repo_path)) do

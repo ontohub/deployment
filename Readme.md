@@ -12,6 +12,7 @@ The basic command to deploy `<application>` in the `<environment>` to a `<server
 
 where the three place holders can be:
 * `<server>` is one of
+  * `live` (ontohub.org)
   * `staging` (staging.ontohub.org)
 * `<application>` is one of
   * `ontohub-frontend`
