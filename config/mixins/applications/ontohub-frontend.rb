@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'open3'
+
 Rake::Task['load:defaults'].invoke
 Rake::Task['load:defaults'].clear
 Rake::Task['load:defaults'].reenable
@@ -89,7 +91,12 @@ before :'deploy:publishing', :build_application do
     Dir.chdir(fetch(:local_repo_path)) do
       # Build the application and print the result
       system('yarn')
-      system('yarn', 'build')
+
+      env = {'REACT_APP_BACKEND_HOST' => fetch(:backend_url)}
+      Open3.popen2e(env, 'yarn', 'build') do |_stdin, stdout_and_err, wait_thr|
+        Thread.new { stdout_and_err.each { |l| puts l } }
+        wait_thr.value
+      end
     end
   end
 end
