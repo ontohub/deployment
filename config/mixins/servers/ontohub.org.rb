@@ -7,6 +7,8 @@ set :rbenv_custom_path, '/local/usr/ruby'
 
 # The branch will be set in the :set_deploy_tag task
 set :branch, nil
+set :backend_url, 'https://tb.iks.cs.ovgu.de'
+set :grecaptcha_site_key, '6LdKSR8UAAAAANuiYuJcuJRQm4Go-dQh0he82vpU'
 
 # Find the latest tag in the repository
 after :'git:update', :set_latest_tag do
@@ -21,6 +23,11 @@ end
 
 # Set the tag to deploy (sets the branch)
 after :set_latest_tag, :set_deploy_tag do
+  # Exit if a branch is given (e.g. by command line)
+  unless fetch(:branch).nil?
+    $stderr.puts 'Cannot deploy: Deploying a branch is disabled for this stage.'
+    exit
+  end
   # Get the latest tags and set the default
   default_tag = fetch(:latest_tag)
 
