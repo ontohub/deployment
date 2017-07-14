@@ -92,7 +92,8 @@ before :'deploy:publishing', :build_application do
       # Build the application and print the result
       system('yarn')
 
-      env = {'REACT_APP_BACKEND_HOST' => fetch(:backend_url)}
+      env = {'REACT_APP_BACKEND_HOST' => fetch(:backend_url),
+             'REACT_APP_GRECAPTCHA_SITE_KEY' => fetch(:grecaptcha_site_key)}
       Open3.popen2e(env, 'yarn', 'build') do |_stdin, stdout_and_err, wait_thr|
         Thread.new { stdout_and_err.each { |l| puts l } }
         wait_thr.value

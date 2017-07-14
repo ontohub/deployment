@@ -7,3 +7,4 @@ set :rbenv_custom_path, '/local/usr/ruby'
 
 set :branch, 'master'
 set :backend_url, 'https://tb.iks.cs.ovgu.de'
+set :grecaptcha_site_key, '6LdKSR8UAAAAANuiYuJcuJRQm4Go-dQh0he82vpU'
