@@ -32,3 +32,6 @@ tmp/**/*
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Local repositories
+/repos/*
