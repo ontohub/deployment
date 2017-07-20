@@ -1,0 +1,75 @@
+# frozen_string_literal: true
+
+require 'graphql-docs'
+
+Rake::Task['load:defaults'].invoke
+Rake::Task['load:defaults'].clear
+Rake::Task['load:defaults'].reenable
+Rake::Task['load:defaults'].invoke
+
+set :application, 'apidoc'
+set :repo_url, 'https://github.com/ontohub/ontohub-backend.git'
+
+mixin('local_repository')
+
+set :graphql_base_url, '/graphql'
+
+# rubocop:disable Metrics/BlockLength
+before :'deploy:publishing', :build_application do
+  # rubocop:enable Metrics/BlockLength
+  run_locally do
+    Bundler.with_clean_env do
+      local_repo = fetch(:local_repo_path)
+      build_dir = File.join(local_repo, 'build')
+      Dir.chdir(local_repo) do
+        system('bundle install')
+
+        # Build the REST API documentation into a temp directory
+        system('bundle exec rails apidoc:prepare')
+        system('bundle exec rails apidoc:init')
+        Dir.chdir('apidoc') do
+          system('yarn build')
+        end
+
+        # Build the GraphQL documentation into a temp directory
+        apidoc_graphql_dir = File.join(local_repo, 'apidoc-graphql')
+        graphql_schema_file = File.join(local_repo, 'tmp/graphql_schema.json')
+
+        popen({'FILE' => graphql_schema_file},
+              'bundle', 'exec', 'rails', 'graphql:write_json')
+
+        GraphQLDocs.build(delete_output: true,
+                          output_dir: apidoc_graphql_dir,
+                          base_url: fetch(:graphql_base_url),
+                          path: graphql_schema_file)
+
+        # Move the generated documentation files to the `build` directory
+        FileUtils.rm_rf(build_dir)
+        system("mkdir -p #{build_dir}")
+        FileUtils.mv(File.join(local_repo, 'apidoc/build'),
+                     File.join(build_dir, 'rest'))
+        FileUtils.mv(apidoc_graphql_dir, File.join(build_dir, 'graphql'))
+
+        # Add an index page to select the API docs:
+        index_content = <<~INDEX
+          <html>
+            <head>
+              <title>Ontohub API Documentation</title>
+            </head>
+            <body>
+              <h1>Ontohub API Documentation</h1>
+              <p>Please select an API</p>
+              <ul>
+                <li><a href="graphql">GraphQL</a> (with full functionality)</li>
+                <li><a href="rest">REST</a> (read only actions)</li>
+              </ul>
+            </body>
+          </html>
+        INDEX
+        File.write(File.join(build_dir, 'index.html'), index_content)
+      end
+    end
+  end
+end
+
+after :build_application, :publish_built_application
