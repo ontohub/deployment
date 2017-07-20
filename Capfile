@@ -40,6 +40,7 @@ install_plugin Capistrano::SCM::Git
 # Add the mixin method
 $:.unshift(File.dirname(__FILE__))
 require 'lib/mixin'
+require 'lib/popen'
 
 # Disable freezing rake tasks
 require 'lib/disable_immutable_task'
