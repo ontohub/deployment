@@ -15,9 +15,10 @@ where the three place holders can be:
   * `live` (ontohub.org)
   * `staging` (staging.ontohub.org)
 * `<application>` is one of
-  * `ontohub-frontend`
-  * `ontohub-backend`
-  * `hets-rabbitmq-wrapper`
+  * `apidoc`: The API documentation of the backend
+  * `ontohub-backend`: The backend
+  * `ontohub-frontend`: The frontend
+  * `hets-rabbitmq-wrapper`: The HetsRabbitMQWrapper
 
 so to deploy the backend to staging.ontohub.org, you need to execute
 
