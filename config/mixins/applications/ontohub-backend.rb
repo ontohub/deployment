@@ -2,14 +2,15 @@
 
 Rake::Task['load:defaults'].invoke
 Rake::Task['load:defaults'].clear
-require 'capistrano/rbenv'
-require 'capistrano/bundler'
+mixin('ruby_project_requirements')
 require 'capistrano/rails/migrations'
 Rake::Task['load:defaults'].reenable
 Rake::Task['load:defaults'].invoke
 
 set :application, 'ontohub-backend'
 set :repo_url, 'https://github.com/ontohub/ontohub-backend.git'
+
+mixin('ruby_project_config')
 
 # Default value for :linked_files is []
 append :linked_files, 'config/database.yml',
@@ -22,16 +23,6 @@ append :linked_files, 'config/database.yml',
 append :linked_dirs, 'log', 'public/system', 'public/uploads',
                      'tmp/cache', 'tmp/pids', 'tmp/sockets',
                      'vendor/bundle'
-
-set :rbenv_type, :system # or :user
-# The ruby version is only considered if there is no override (like a
-# .ruby-version file)
-set :rbenv_ruby, '2.4.1'
-set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} "\
-                   "#{fetch(:rbenv_path)}/bin/rbenv exec"
-set :rbenv_map_bins, %w(rake gem bundle ruby rails)
-
-set :bundle_binstubs, -> { "~#{fetch(:deploy_user)}/bin" }
 
 set :migration_role, :app
 
