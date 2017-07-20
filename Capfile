@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'pry'
+
 # Load DSL and set up stages
 require 'capistrano/setup'
 
