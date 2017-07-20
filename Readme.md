@@ -8,13 +8,12 @@ i.e. a mix of configurations that allow easy deployment with capistrano.
 
 The basic command to deploy `<application>` in the `<environment>` to a `<server>` is
 
-    $ bundle exec cap <server>_<environment>_<application> deploy
+    $ bundle exec cap <server>_<application> deploy
 
 where the three place holders can be:
 * `<server>` is one of
+  * `live` (ontohub.org)
   * `staging` (staging.ontohub.org)
-* `<environment>` is one of
-  * `production`
 * `<application>` is one of
   * `ontohub-frontend`
   * `ontohub-backend`
@@ -22,7 +21,7 @@ where the three place holders can be:
 
 so to deploy the backend to staging.ontohub.org, you need to execute
 
-    $ bundle exec cap staging_production_ontohub-backend deploy
+    $ bundle exec cap staging_ontohub-backend deploy
 
 ## First deployment
 
