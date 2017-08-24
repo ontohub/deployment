@@ -9,19 +9,20 @@ Rake::Task['load:defaults'].invoke
 
 set :application, 'apidoc'
 set :repo_url, 'https://github.com/ontohub/ontohub-backend.git'
+set :deploy_base_dir, '/web/03_theo/sites/docs.ontohub.org/htdocs'
+set :deploy_to, "#{fetch(:deploy_base_dir)}/#{fetch(:apidoc_dir)}"
 
 mixin('local_repository')
 
-set :graphql_base_url, '/graphql'
-
 # rubocop:disable Metrics/BlockLength
 before :'deploy:publishing', :build_application do
-  # rubocop:enable Metrics/BlockLength
   run_locally do
+    release_dir = fetch(:release_path).sub(%r{\A#{fetch(:deploy_to)}/}, '')
     Bundler.with_clean_env do
       local_repo = fetch(:local_repo_path)
       build_dir = File.join(local_repo, 'build')
       Dir.chdir(local_repo) do
+        # rubocop:enable Metrics/BlockLength
         system('bundle install')
 
         # Build the REST API documentation into a temp directory
@@ -38,9 +39,10 @@ before :'deploy:publishing', :build_application do
         popen({'FILE' => graphql_schema_file},
               'bundle', 'exec', 'rails', 'graphql:write_json')
 
+        base_url = File.join('/', fetch(:apidoc_dir), release_dir, 'graphql')
         GraphQLDocs.build(delete_output: true,
                           output_dir: apidoc_graphql_dir,
-                          base_url: fetch(:graphql_base_url),
+                          base_url: base_url,
                           path: graphql_schema_file)
 
         # Move the generated documentation files to the `build` directory
