@@ -75,3 +75,10 @@ before :'deploy:publishing', :build_application do
 end
 
 after :build_application, :publish_built_application
+
+after :publish_built_application, :remove_unnecessary_directories do
+  on roles(:all) do
+    execute(:rmdir, File.join(fetch(:deploy_to), 'repo'))
+    execute(:rmdir, File.join(fetch(:deploy_to), 'shared'))
+  end
+end
