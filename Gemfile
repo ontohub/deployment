@@ -8,4 +8,4 @@ gem 'capistrano', '~> 3.9.1'
 gem 'capistrano-rails', '~> 1.3.0'
 gem 'capistrano-rbenv', '~> 2.1.2'
 
-gem 'graphql-docs', '~> 1.0.0.pre5'
+gem 'graphql-docs', '~> 1.0.0'
