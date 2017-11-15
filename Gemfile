@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'pry', '~> 0.11.2'
+gem 'pry', '~> 0.11.3'
 
 gem 'capistrano', '~> 3.10.0'
 gem 'capistrano-rails', '~> 1.3.0'
