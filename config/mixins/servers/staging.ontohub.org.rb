@@ -16,5 +16,7 @@ set :grecaptcha_site_key, '6LdKSR8UAAAAANuiYuJcuJRQm4Go-dQh0he82vpU'
 set :apidoc_dir, 'staging'
 
 # Local repository targets
-after :'git:update', :set_latest_tag {}
-after :set_latest_tag, :set_deploy_tag {}
+after :'git:update', :set_latest_tag do
+end
+after :set_latest_tag, :set_deploy_tag do
+end
