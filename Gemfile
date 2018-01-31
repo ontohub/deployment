@@ -9,3 +9,5 @@ gem 'capistrano-rails', '~> 1.3.1'
 gem 'capistrano-rbenv', '~> 2.1.3'
 
 gem 'graphql-docs', '~> 1.0.2'
+gem 'commonmarker', '~> 0.17.7'
+gem 'sass', '~> 3.5.5'
