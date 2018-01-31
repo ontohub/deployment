@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # config valid only for current version of Capistrano
-lock '3.8.2'
+lock '3.10.1'
 
 # See configuration manual for options
 #   http://capistranorb.com/documentation/getting-started/configuration
