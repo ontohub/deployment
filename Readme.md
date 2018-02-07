@@ -18,7 +18,7 @@ where the three place holders can be:
   * `apidoc`: The API documentation of the backend
   * `ontohub-backend`: The backend
   * `ontohub-frontend`: The frontend
-  * `hets-rabbitmq-wrapper`: The HetsRabbitMQWrapper
+  * `hets-agent`: The HetsAgent
 
 so to deploy the backend to staging.ontohub.org, you need to execute
 

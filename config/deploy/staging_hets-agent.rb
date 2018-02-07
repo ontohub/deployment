@@ -2,4 +2,4 @@
 
 mixin 'servers/staging.ontohub.org'
 mixin 'environments/production'
-mixin 'applications/hets-rabbitmq-wrapper'
+mixin 'applications/hets-agent'

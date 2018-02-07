@@ -6,8 +6,8 @@ mixin('ruby_project_requirements')
 Rake::Task['load:defaults'].reenable
 Rake::Task['load:defaults'].invoke
 
-set :application, 'hets-rabbitmq-wrapper'
-set :repo_url, 'https://github.com/ontohub/hets-rabbitmq-wrapper.git'
+set :application, 'hets-agent'
+set :repo_url, 'https://github.com/ontohub/hets-agent.git'
 
 mixin('ruby_project_config')
 
