@@ -8,6 +8,7 @@ set :local_repo_path, File.join(fetch(:local_repo_root), fetch(:application))
 
 # rubocop:disable Metrics/BlockLength
 namespace :git do
+  # rubocop:enable Metrics/BlockLength
   # Clone the repo to the local directory if it is not yet cloned.
   Rake::Task['git:clone'].clear_actions
   task :clone do

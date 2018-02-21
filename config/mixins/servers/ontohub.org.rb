@@ -25,7 +25,7 @@ end
 after :set_latest_tag, :set_deploy_tag do
   # Exit if a branch is given (e.g. by command line)
   unless fetch(:branch).nil?
-    $stderr.puts 'Cannot deploy: Deploying a branch is disabled for this stage.'
+    warn 'Cannot deploy: Deploying a branch is disabled for this stage.'
     exit
   end
   # Get the latest tags and set the default
@@ -39,7 +39,7 @@ after :set_latest_tag, :set_deploy_tag do
 
   # Be extra cautious and exit if a tag cannot be found
   if fetch(:tag).nil? || fetch(:tag).empty?
-    $stderr.puts 'Cannot deploy: The tag was not found.'
+    warn 'Cannot deploy: The tag was not found.'
     exit
   end
 

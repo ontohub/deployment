@@ -6,8 +6,7 @@ module Capistrano
   # We need, however, to redefine tasks on the fly, so freezing tasks must be
   # disabled:
   module ImmutableTask
-    def self.extended(_task)
-    end
+    def self.extended(_task); end
 
     def enhance(*args, &block)
       super(*args, &block)
