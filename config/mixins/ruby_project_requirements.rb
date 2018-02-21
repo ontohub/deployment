@@ -2,4 +2,3 @@
 
 require 'capistrano/rbenv'
 require 'capistrano/bundler'
-require 'capistrano/rails/migrations'
