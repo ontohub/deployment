@@ -12,7 +12,9 @@ set :repo_url, 'https://github.com/ontohub/indexer.git'
 mixin('ruby_project_config')
 
 # Default value for :linked_files is []
-# append :linked_files, 'config/settings.yml'
+append :linked_files, 'config/database.yml',
+                      'config/settings.local.yml',
+                      'config/settings/production.local.yml'
 
 # Default value for linked_dirs is []
 # append :linked_dirs, 'log'
