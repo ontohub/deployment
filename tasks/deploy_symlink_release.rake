@@ -11,7 +11,7 @@ namespace :deploy do
         within deploy_path do
           current = current_path.sub(%r{\A#{deploy_path}/?}, '')
           release = release_path.sub(%r{\A#{deploy_path}/?}, '')
-          execute :ln, '-sf', release, current
+          execute :ln, '-sfT', release, current
         end
       end
     end
