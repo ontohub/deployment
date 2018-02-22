@@ -6,14 +6,13 @@ mixin('ruby_project_requirements')
 Rake::Task['load:defaults'].reenable
 Rake::Task['load:defaults'].invoke
 
-set :application, 'hets-agent'
-set :repo_url, 'https://github.com/ontohub/hets-agent.git'
+set :application, 'git-shell'
+set :repo_url, 'https://github.com/ontohub/git-shell.git'
 
 mixin('ruby_project_config')
 
 # Default value for :linked_files is []
-append :linked_files, 'config/database.yml',
-                      'config/settings.local.yml',
+append :linked_files, 'config/settings.local.yml',
                       'config/settings/production.local.yml'
 
 # Default value for linked_dirs is []

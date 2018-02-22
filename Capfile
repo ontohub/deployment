@@ -38,7 +38,7 @@ install_plugin Capistrano::SCM::Git
 # require 'capistrano/ember_cli'
 
 # Add the mixin method
-$:.unshift(File.dirname(__FILE__))
+$LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'lib/mixin'
 require 'lib/popen'
 

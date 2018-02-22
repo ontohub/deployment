@@ -2,7 +2,7 @@
 
 Rake::Task['load:defaults'].invoke
 Rake::Task['load:defaults'].clear
-mixin('ruby_project_requirements')
+mixin('rails_project_requirements')
 require 'capistrano/rails/migrations'
 Rake::Task['load:defaults'].reenable
 Rake::Task['load:defaults'].invoke

@@ -19,6 +19,8 @@ where the three place holders can be:
   * `ontohub-backend`: The backend
   * `ontohub-frontend`: The frontend
   * `hets-agent`: The HetsAgent
+  * `indexer`: The search indexer
+  * `git-shell`: The Git shell
 
 so to deploy the backend to staging.ontohub.org, you need to execute
 
