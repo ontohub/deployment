@@ -13,6 +13,9 @@ AllCops:
     - 'bin/setup'
     - 'bin/spring'
     - 'bin/update'
+    - 'config/deploy/*.rb'
+    - 'config/mixins/applications/*.rb'
+    - 'data/**/*'
     - 'db/schema.rb'
     - 'node_modules/**/*'
     - 'spec/dummy/**/*'
@@ -54,6 +57,7 @@ Naming/FileName:
     - config/deploy/*.rb
     - config/mixins/applications/*.rb
     - lib/git-shell.rb
+    - lib/graphql-pundit.rb
     - lib/hets-agent.rb
     - lib/ontohub-models.rb
     - spec/lib/git-shell_spec.rb
@@ -61,6 +65,7 @@ Naming/FileName:
 Style/Documentation:
   Exclude:
     - 'app/indexers/**/*'
+    - 'spec/**/*'
 
 Style/DoubleNegation:
   Enabled: false
@@ -84,5 +89,8 @@ Style/SymbolArray:
   Exclude:
     - 'db/migrate/**'
 
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
