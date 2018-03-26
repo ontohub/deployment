@@ -11,4 +11,4 @@ gem 'capistrano-rbenv', '~> 2.1.3'
 
 gem 'commonmarker', '~> 0.17.9'
 gem 'graphql-docs', '~> 1.3.3'
-gem 'sass', '~> 3.5.5'
+gem 'sass', '~> 3.5.6'
