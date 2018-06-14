@@ -60,8 +60,9 @@ end
 
 before :'deploy:finished', :'puma:restart' do
   on roles(:all) do
-    execute('/usr/sbin/svcadm', 'disable', '-s', 'puma',
-            raise_on_non_zero_exit: false)
-    execute('/usr/sbin/svcadm', 'enable', '-s', 'puma')
+    with path: '/usr/sbin:$PATH' do
+      execute(:svcadm, 'restart', '-s', 'puma',
+              raise_on_non_zero_exit: false)
+    end
   end
 end

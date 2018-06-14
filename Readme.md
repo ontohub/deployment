@@ -6,7 +6,7 @@ i.e. a mix of configurations that allow easy deployment with capistrano.
 
 ## How to deploy
 
-The basic command to deploy `<application>` in the `<environment>` to a `<server>` is
+The basic command to deploy `<application>` to a `<server>` is
 
     $ bundle exec cap <server>_<application> deploy
 

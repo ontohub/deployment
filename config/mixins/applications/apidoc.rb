@@ -11,7 +11,7 @@ Rake::Task['load:defaults'].invoke
 
 set :application, 'apidoc'
 set :repo_url, 'https://github.com/ontohub/ontohub-backend.git'
-set :deploy_base_dir, '/web/03_theo/sites/docs.ontohub.org/htdocs'
+set :deploy_base_dir, '/local/home/webadm/apidocs'
 set :deploy_to, "#{fetch(:deploy_base_dir)}/#{fetch(:apidoc_dir)}"
 
 mixin('local_repository')
