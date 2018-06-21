@@ -14,6 +14,7 @@ where the three place holders can be:
 * `<server>` is one of
   * `live` (ontohub.org)
   * `staging` (staging.ontohub.org)
+  * `tc` (tc.ontohub.org)
 * `<application>` is one of
   * `apidoc`: The API documentation of the backend
   * `ontohub-backend`: The backend

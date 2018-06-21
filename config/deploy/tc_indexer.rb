@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-mixin 'servers/te.ontohub.org'
+mixin 'servers/tc.ontohub.org'
 mixin 'environments/production'
-mixin 'applications/hets-agent'
+mixin 'applications/indexer'

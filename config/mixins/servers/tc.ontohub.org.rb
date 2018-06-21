@@ -2,14 +2,14 @@
 
 # Machine configuration
 set :deploy_user, 'webadm'
-server 'te.ontohub.org', user: fetch(:deploy_user), roles: %w(app db web)
+server 'tc.ontohub.org', user: fetch(:deploy_user), roles: %w(app db web)
 set :tmp_dir, '/var/tmp'
 set :rbenv_custom_path, '/local/usr/ruby'
 
 set :branch, 'master'
 
 # Frontend configuration
-set :backend_url, 'https://tb.iks.cs.ovgu.de'
+set :backend_url, 'https://tc.iks.cs.ovgu.de'
 set :grecaptcha_site_key, '6LdKSR8UAAAAANuiYuJcuJRQm4Go-dQh0he82vpU'
 
 # APIdoc configuration
