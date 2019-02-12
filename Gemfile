@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'pry', '~> 0.11.3'
+gem 'pry', '~> 0.12.2'
 gem 'rubocop', '~> 0.56.0'
 
 gem 'capistrano', '~> 3.10.2'
