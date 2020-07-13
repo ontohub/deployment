@@ -7,7 +7,7 @@ gem 'rubocop', '~> 0.56.0'
 
 gem 'capistrano', '~> 3.10.2'
 gem 'capistrano-rails', '~> 1.3.1'
-gem 'capistrano-rbenv', '~> 2.1.3'
+gem 'capistrano-rbenv', '~> 2.2.0'
 
 gem 'commonmarker', '~> 0.17.9'
 gem 'graphql-docs', '~> 1.4.0'
