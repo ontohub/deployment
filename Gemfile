@@ -6,7 +6,7 @@ gem 'pry', '~> 0.11.3'
 gem 'rubocop', '~> 0.56.0'
 
 gem 'capistrano', '~> 3.10.2'
-gem 'capistrano-rails', '~> 1.3.1'
+gem 'capistrano-rails', '~> 1.6.1'
 gem 'capistrano-rbenv', '~> 2.1.3'
 
 gem 'commonmarker', '~> 0.17.9'
