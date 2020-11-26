@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'pry', '~> 0.11.3'
-gem 'rubocop', '~> 0.56.0'
+gem 'rubocop', '~> 1.4.2'
 
 gem 'capistrano', '~> 3.10.2'
 gem 'capistrano-rails', '~> 1.3.1'
